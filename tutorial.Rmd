@@ -1,0 +1,172 @@
+---
+title: "Documentation in R"
+author: "Rebecca Barter"
+date: "2/24/2017"
+output: html_document
+---
+
+## Caret: an example of good documentation
+
+### Load in package
+```{r eval = FALSE} 
+install.packages("lubdirate")
+```
+
+```{r message=FALSE}
+library(lubridate)
+```
+
+
+### Look at the help files
+
+```{r}
+?ymd
+```
+
+### Look at the vignette
+
+```{r eval = F}
+vignette("lubridate")
+```
+
+
+## Create our own package and document it
+
+If you are going to be making your own package, you will need to install `devtools`.
+
+```{r eval = FALSE}
+install.packages("devtools")
+```
+
+### Create package skeleton
+
+Then we can create a new package skeleton that devtools will fill out with the basic files.
+
+```{r eval = FALSE}
+devtools::create("path/to/package/pkgname")
+```
+
+
+In this package skeleton, you will find a folder, `R`. This is where your functions will go.
+
+### Add some functions
+
+Inside the `R` folder, we will add the files `add.R` and `multiply.R` which will contain functions which can add and multiply two numbers together.
+
+For example, `add.R` will contain the following function:
+
+```{r}
+add <- function(x, y) {
+  x + y
+}
+```
+
+and `multiply.R` will contain the following function:
+
+```{r}
+multiply <- function(x, y) {
+  x * y
+}
+```
+
+
+### Document these functions
+
+We can now use roxygen comments to document these functions. This will mean that when we type `?add`, a help files will appear!
+
+Roxygen comments, #', look a lot like regular R comments, #. To document the `add()` function, we will add comments above the function in the `add.R` file which will include tags for parameters (`@param`), the return value (`@return`) and examples (`@examples`). The first sentence is the title of the document.
+
+```{r eval = FALSE}
+#' Take the sum of two values
+#'
+#' @param x a numeric value
+#' @param y a numeric value
+#' 
+#' @return the sum of x and y
+#' 
+#' @examples 
+#' add(3, 4)
+#' add(4, 3)
+
+add <- function(x, y) {
+  x + y
+}
+
+```
+
+We can roxygenize the multiply function in a similar manner.
+```{r eval = F}
+#' Take the scalar product of two values
+#'
+#' @param x a numeric value
+#' @param y a numeric value
+#' 
+#' @return the product of x and y
+#' 
+#' @examples 
+#' multiply(3, 4)
+#' multiply(4, 3)
+
+multiply <- function(x, y) {
+  x * y
+}
+```
+
+### Render the help files
+
+You can render the documentation for your package using the `document()` function from the devtools package. Make sure that you are in the package working directory!
+
+```{r eval = F}
+devtools::document()
+```
+
+Now if you type `?add`, the help file should appear in the help panel.
+
+How easy is that!
+
+
+### Building a vignette
+
+Next, we can build a vignette. If you want a pdf vignette, you can create a new "R Sweave" file, or to create a html vignette, you can create a new "R Markdown" file. The vignette will go in a folder appropriately titled `vignette/`. 
+
+Unsurprisingly, devtools offers a function for creating a new vignette. Let's create a new vignette called "math"
+
+```{r eval = FALSE}
+devtools::use_vignette("math")
+```
+
+
+A file called `math.Rmd` file should have opened up. Knit it to see an example of the output.
+
+We can edit this vignette to describe how to use our package.
+
+
+### Bookdown documentation
+
+If your package is complex and has many different types of functionalities, a single vignette will likely not be enough. While you can certainly make multiple vignettes, a better way is to write a documentation "book" (techincally it is a gitbook) using bookdown! Although this isn't necessarily an official form of documentation for R packages yet, it is becoming more and more common. 
+
+To create a gitbook, you need to clone the demo from github. To do so, in your terminal, type the following git command
+
+```{r engine = 'bash', eval = F}
+git clone https://github.com/rstudio/bookdown-demo
+```
+
+A folder names `bookdown-demo/` will have appeared in your working directory folder. Navigate to it.
+
+```{r, eval = F}
+setwd("path/to/bookdown-demo")
+```
+
+Next, install the bookdown package.
+
+```{r eval = F}
+install.packages("bookdown")
+```
+
+You can compile the book template using the `render_book()` command. Be sure to include the argument `output_format = bookdown::gitbook()` if you want to compile a gitbook (rather than a .pdf).
+
+```{r eval = F}
+bookdown::render_book("index.Rmd", output_format = bookdown::gitbook())
+```
+
+A `_book/` folder will have appeared in your bookdown-demo folder. In this folder, open the `index.html` file.

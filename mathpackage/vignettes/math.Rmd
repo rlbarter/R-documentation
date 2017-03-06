@@ -1,0 +1,47 @@
+---
+title: "Vignette: Math Package"
+author: "Rebecca Barter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+The mathpackage is an extremely useful package designed for adding and multiplying numeric values. 
+
+## Addition
+
+Addition, commonly denoted as "+", is a mathemtical concept that describes incrementing one value an amount specified by another value.
+
+For example, 
+
+$$1 + 5 = 6.$$
+
+This can be calculated using the `mathpackage` as follows:
+
+```{r, echo = FALSE, message=FALSE}
+devtools::load_all()
+```
+
+```{r}
+add(1, 5)
+```
+
+
+## Multiplication
+
+The other functionality offered by Math Package is that of multiplication, often denoted "$\times$". I can't be bothered to tell you what multiplication is, so I'll just tell you that
+
+$$ 4 \times 3 = 12$$
+
+This can be calculated using the `mathpackage` as follows:
+
+```{r}
+multiply(4, 3)
+```
+
+
