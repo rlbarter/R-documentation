@@ -9,7 +9,7 @@ output: html_document
 
 ### Load in package
 ```{r eval = FALSE} 
-install.packages("lubdirate")
+install.packages("lubridate")
 ```
 
 ```{r message=FALSE}
