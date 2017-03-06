@@ -1,0 +1,7 @@
+# Multiplying numbers together
+
+Multiplying is easy too!
+
+```{r}
+multiply(3, 5)
+```

@@ -1,0 +1,29 @@
+--- 
+title: "A Math Package"
+author: "Rebecca Barter"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Introduction
+
+If you want to add or multiple numbers together, then this package is for you!
+
+To install it, you would usually type 
+
+```{r eval = F}
+install.packages("mathpackage") ## this won't work as the package isn't on CRAN
+```
+
+
+```{r}
+# this will work for now :)
+devtools::load_all("../")
+```

@@ -1,0 +1,5 @@
+[
+["index.html", "A Math Package Chapter 1 Introduction", " A Math Package Rebecca Barter 2017-03-06 Chapter 1 Introduction If you want to add or multiple numbers together, then this package is for you! To install it, you would usually type install.packages(&quot;mathpackage&quot;) ## this won&#39;t work as the package isn&#39;t on CRAN # this will work for now :) devtools::load_all(&quot;../&quot;) ## Loading mathpackage "],
+["adding-numbers-together.html", "Chapter 2 Adding numbers together", " Chapter 2 Adding numbers together Adding numbers together is easy, just use the add function! add(5, 7) ## [1] 12 "],
+["multiplying-numbers-together.html", "Chapter 3 Multiplying numbers together", " Chapter 3 Multiplying numbers together Multiplying is easy too! multiply(3, 5) ## [1] 15 "]
+]

@@ -1,0 +1,7 @@
+# Adding numbers together
+
+Adding numbers together is easy, just use the `add` function!
+
+```{r}
+add(5, 7)
+```
